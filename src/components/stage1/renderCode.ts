@@ -1,6 +1,5 @@
 import { appState, render } from '../../app.js';
-// import renderStage1 from '../../pages/renderStage1.js';
-import { codeIsOk } from '../../validation.js';
+import { codeIsOk } from '../../helper-functions.js';
 
 function renderCode() {
   const container = <HTMLDivElement>document.getElementById('container');
@@ -19,23 +18,19 @@ function renderCode() {
 
   codeInput.maxLength = 4;
 
-  codeInput.onblur = (e) => {
+  codeInput.onchange = (e) => {
     const { value } = e.target as HTMLInputElement;
 
-    console.log('inside blur');
     appState.inputsTouched = true;
     appState.code = value;
     appState.codeIsValid = codeIsOk(value);
 
     if (appState.codeIsValid && appState.phoneIsValid) {
-      console.log('phone and code are valid');
       appState.buttonIsDisabled = false;
     } else {
-      console.log('phone and code are NOT valid');
       appState.buttonIsDisabled = true;
     }
     render();
-    // renderStage1(appState);
   };
 
   codeContainer.appendChild(codeLabel);

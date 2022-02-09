@@ -1,6 +1,6 @@
 import { appState, render } from '../../app.js';
 // import renderStage1 from '../../pages/renderStage1.js';
-import { phoneIsOk } from '../../validation.js';
+import { phoneIsOk } from '../../helper-functions.js';
 
 function renderPhone() {
   const container = <HTMLDivElement>document.getElementById('container');
@@ -25,14 +25,11 @@ function renderPhone() {
     appState.phone = value;
 
     if (appState.codeIsValid && appState.phoneIsValid) {
-      console.log('phone and code are valid');
       appState.buttonIsDisabled = false;
     } else {
-      console.log('phone and code are NOT valid');
       appState.buttonIsDisabled = true;
     }
     render();
-    // renderStage1(appState);
   };
 
   phoneContainer.appendChild(phoneLabel);

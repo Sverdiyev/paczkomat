@@ -17,7 +17,6 @@ export function render() {
   container.textContent = '';
 
   if (appState.page === 0) renderStage0();
-
   if (appState.page === 1) renderStage1();
   if (appState.page === 2) renderStage2();
 }
