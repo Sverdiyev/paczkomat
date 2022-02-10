@@ -10,11 +10,12 @@ function renderCode() {
     codeLabel.htmlFor = 'codeNumber';
     codeLabel.innerText = 'Code:';
     codeInput.id = 'codeNumber';
-    codeInput.type = 'text';
+    codeInput.type = 'tel';
     // codeInput.pattern = '[0-9]';
     if (appState.code)
         codeInput.value = appState.code;
     codeInput.maxLength = 4;
+    codeInput.placeholder = '4-digit Code';
     codeInput.onchange = (e) => {
         const { value } = e.target;
         appState.codeIsTouched = true;

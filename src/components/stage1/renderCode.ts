@@ -14,7 +14,7 @@ function renderCode() {
   codeLabel.innerText = 'Code:';
 
   codeInput.id = 'codeNumber';
-  codeInput.type = 'text';
+  codeInput.type = 'tel';
   // codeInput.pattern = '[0-9]';
   if (appState.code) codeInput.value = appState.code;
 
