@@ -18,6 +18,7 @@ function renderPhone() {
   phoneInput.type = 'tel';
   // phoneInput.pattern = '[+]{1}[0-9]{11,14}';
   phoneInput.maxLength = 9;
+  phoneInput.placeholder = 'Phone Number';
   if (appState.phone) phoneInput.value = appState.phone;
 
   phoneInput.onblur = (e) => {
