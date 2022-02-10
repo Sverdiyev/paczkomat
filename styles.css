@@ -11,21 +11,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30%;
-}
-
-.start-button {
-  margin: 0 auto;
-}
-
-.submit-button {
-  width: 70%;
+  width: 20%;
 }
 
 .input-container {
   display: flex;
   justify-content: space-between;
-  width: 70%;
+  width: 100%;
 }
 
 .invalid,
@@ -35,4 +27,12 @@ body {
 
 p {
   margin: 2px;
+}
+
+button {
+  width: 100%;
+}
+
+.start-button {
+  width: 50%;
 }

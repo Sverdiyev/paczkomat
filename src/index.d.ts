@@ -4,6 +4,7 @@ interface appStateType {
   code?: string;
   codeIsValid?: boolean;
   phoneIsValid?: boolean;
-  inputsTouched?: boolean;
   buttonIsDisabled?: boolean;
+  phoneIsTouched: boolean;
+  codeIsTouched: boolean;
 }

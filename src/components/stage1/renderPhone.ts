@@ -22,11 +22,14 @@ function renderPhone() {
 
   phoneInput.onblur = (e) => {
     const { value } = e.target as HTMLInputElement;
-    appState.inputsTouched = true;
+    appState.phoneIsTouched = true;
     appState.phoneIsValid = phoneIsOk(value);
     appState.phone = value;
 
-    if (appState.codeIsValid && appState.phoneIsValid) {
+    if (
+      appState.phoneIsValid &&
+      (appState.codeIsValid || !appState.codeIsTouched)
+    ) {
       appState.buttonIsDisabled = false;
     } else {
       appState.buttonIsDisabled = true;
@@ -38,7 +41,7 @@ function renderPhone() {
   phoneContainer.appendChild(phoneInput);
 
   container.appendChild(phoneContainer);
-  if (!appState.phoneIsValid && appState.inputsTouched) {
+  if (!appState.phoneIsValid && appState.phoneIsTouched) {
     console.log('phone is not valid');
 
     phoneContainer.classList.add('invalid');

@@ -23,11 +23,14 @@ function renderCode() {
   codeInput.onchange = (e) => {
     const { value } = e.target as HTMLInputElement;
 
-    appState.inputsTouched = true;
+    appState.codeIsTouched = true;
     appState.code = value;
     appState.codeIsValid = codeIsOk(value);
 
-    if (appState.codeIsValid && appState.phoneIsValid) {
+    if (
+      appState.codeIsValid &&
+      (appState.phoneIsValid || !appState.phoneIsTouched)
+    ) {
       appState.buttonIsDisabled = false;
     } else {
       appState.buttonIsDisabled = true;
@@ -40,7 +43,7 @@ function renderCode() {
 
   container.appendChild(codeContainer);
 
-  if (!appState.codeIsValid && appState.inputsTouched) {
+  if (!appState.codeIsValid && appState.codeIsTouched) {
     console.log('code is not valid');
 
     codeContainer.classList.add('invalid');

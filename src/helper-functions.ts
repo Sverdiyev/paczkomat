@@ -21,7 +21,8 @@ export const reset = () => {
     code: '',
     codeIsValid: false,
     phoneIsValid: false,
-    inputsTouched: false,
     buttonIsDisabled: false,
+    phoneIsTouched: false,
+    codeIsTouched: false,
   });
 };
