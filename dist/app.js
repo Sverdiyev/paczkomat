@@ -11,8 +11,9 @@ export const appState = storedAppState
         code: '',
         codeIsValid: false,
         phoneIsValid: false,
-        inputsTouched: false,
         buttonIsDisabled: false,
+        phoneIsTouched: false,
+        codeIsTouched: false,
     };
 export function render() {
     localStorage.setItem('appState', JSON.stringify(appState));

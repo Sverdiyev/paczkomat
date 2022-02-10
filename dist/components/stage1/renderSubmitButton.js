@@ -3,9 +3,9 @@ function renderButton() {
     const container = document.getElementById('container');
     const submitButton = document.createElement('button');
     submitButton.innerText = 'Submit';
-    if (appState.inputsTouched === true)
+    if (appState.codeIsTouched && appState.phoneIsTouched)
         appState.buttonIsDisabled = !appState.codeIsValid || !appState.phoneIsValid;
-    if (appState.inputsTouched !== true)
+    if (!appState.codeIsTouched && !appState.phoneIsTouched)
         appState.buttonIsDisabled = false;
     if (appState.buttonIsDisabled)
         submitButton.disabled = appState.buttonIsDisabled;
@@ -13,6 +13,8 @@ function renderButton() {
         if (!appState.codeIsValid && !appState.phoneIsValid) {
             alert('please enter correct phone and code');
             appState.buttonIsDisabled = true;
+            appState.codeIsTouched = true;
+            appState.phoneIsTouched = true;
             submitButton.disabled = appState.buttonIsDisabled;
             render();
             return;

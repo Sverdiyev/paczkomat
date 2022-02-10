@@ -3,6 +3,7 @@ function renderStage0() {
     const container = document.getElementById('container');
     const startButton = document.createElement('button');
     startButton.innerText = 'Odbierz Paczke';
+    startButton.className = 'start-button';
     startButton.onclick = () => {
         appState.page = 1;
         render();
