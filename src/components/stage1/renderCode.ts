@@ -1,10 +1,12 @@
 import { appState, render } from '../../app.js';
 import { codeIsOk } from '../../helper-functions.js';
+import makeInvalidInput from './makeInvalidInput.js';
 
 function renderCode() {
   const container = <HTMLDivElement>document.getElementById('container');
 
   const codeContainer = document.createElement('div');
+  codeContainer.className = 'input-container';
   const codeLabel = document.createElement('label');
   const codeInput = document.createElement('input');
 
@@ -37,6 +39,13 @@ function renderCode() {
   codeContainer.appendChild(codeInput);
 
   container.appendChild(codeContainer);
+
+  if (!appState.codeIsValid && appState.inputsTouched) {
+    console.log('code is not valid');
+
+    codeContainer.classList.add('invalid');
+    container.appendChild(makeInvalidInput('Invalid Code'));
+  }
 }
 
 export default renderCode;
