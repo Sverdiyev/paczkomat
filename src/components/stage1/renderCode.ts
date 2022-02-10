@@ -19,6 +19,7 @@ function renderCode() {
   if (appState.code) codeInput.value = appState.code;
 
   codeInput.maxLength = 4;
+  codeInput.placeholder = '4-digit Code';
 
   codeInput.onchange = (e) => {
     const { value } = e.target as HTMLInputElement;
