@@ -13,11 +13,11 @@ export function renderModal() {
   const info = document.createElement('div');
   info.className = 'info';
 
-  const phoneInfoLabel = document.createElement('span');
-  const codeInfoLabel = document.createElement('span');
+  const phoneInfoLabel = document.createElement('p');
+  const codeInfoLabel = document.createElement('p');
 
-  phoneInfoLabel.innerText = `Entered phone number is ${appState.phone}`;
-  codeInfoLabel.innerText = `Entered code is ${appState.code}`;
+  phoneInfoLabel.innerText = `Entered phone number: ${appState.phone}`;
+  codeInfoLabel.innerText = `Entered code: ${appState.code}`;
 
   info.appendChild(phoneInfoLabel);
   info.appendChild(codeInfoLabel);

@@ -1,10 +1,12 @@
 import { appState, render } from '../../app.js';
 import { codeIsOk } from '../../helper-functions.js';
+import makeInvalidInput from './makeInvalidInput.js';
 
 function renderCode() {
   const container = <HTMLDivElement>document.getElementById('container');
 
   const codeContainer = document.createElement('div');
+  codeContainer.className = 'input-container';
   const codeLabel = document.createElement('label');
   const codeInput = document.createElement('input');
 
@@ -21,11 +23,14 @@ function renderCode() {
   codeInput.onchange = (e) => {
     const { value } = e.target as HTMLInputElement;
 
-    appState.inputsTouched = true;
+    appState.codeIsTouched = true;
     appState.code = value;
     appState.codeIsValid = codeIsOk(value);
 
-    if (appState.codeIsValid && appState.phoneIsValid) {
+    if (
+      appState.codeIsValid &&
+      (appState.phoneIsValid || !appState.phoneIsTouched)
+    ) {
       appState.buttonIsDisabled = false;
     } else {
       appState.buttonIsDisabled = true;
@@ -37,6 +42,13 @@ function renderCode() {
   codeContainer.appendChild(codeInput);
 
   container.appendChild(codeContainer);
+
+  if (!appState.codeIsValid && appState.codeIsTouched) {
+    console.log('code is not valid');
+
+    codeContainer.classList.add('invalid');
+    container.appendChild(makeInvalidInput('Invalid Code'));
+  }
 }
 
 export default renderCode;

@@ -2,14 +2,14 @@ import { appState } from './app.js';
 
 export const phoneIsOk = (phone: string) => {
   if (phone.trim() === '') return false;
-  if (phone.trim().length !== 9) return false;
+  if ((+phone.trim()).toString().length !== 9) return false;
 
   return true;
 };
 
 export const codeIsOk = (code: string) => {
   if (code.trim() === '') return false;
-  if (code.trim().length !== 4) return false;
+  if ((+code.trim()).toString().length !== 4) return false;
 
   return true;
 };
@@ -21,7 +21,8 @@ export const reset = () => {
     code: '',
     codeIsValid: false,
     phoneIsValid: false,
-    inputsTouched: false,
     buttonIsDisabled: false,
+    phoneIsTouched: false,
+    codeIsTouched: false,
   });
 };
